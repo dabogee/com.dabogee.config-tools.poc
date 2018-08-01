@@ -18,7 +18,7 @@ public class TypesafeConfigFactory {
     }
 
     public <T> T create(Class<T> clazz) {
-        List<String> configs = new PropertiesFinder(environment).findOrderedList();
+        List<String> configs = new PropertiesFinder(environment).getOrderedConfigurations();
         Config out = ConfigFactory.load();
 
         for (String c : configs) {

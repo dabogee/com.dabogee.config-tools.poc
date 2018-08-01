@@ -24,10 +24,10 @@ public final class PropertiesFinder {
 
     /**
      * @return an array of Properties' objects which were loaded from resources
-     * with the same order as the @findOrderedList() method returns.
+     * with the same order as the @getOrderedConfigurations() method returns.
      */
     public Properties[] find() {
-        return findOrderedList()
+        return getOrderedConfigurations()
                 .stream()
                 .map(this::loadPropertiesByFilename)
                 .collect(Collectors.toList())
@@ -44,7 +44,7 @@ public final class PropertiesFinder {
      * @return - a list of filenames of a configuration
      * with falling from a basic one to more specific.
      */
-    public List<String> findOrderedList() {
+    public List<String> getOrderedConfigurations() {
         return parseParentConfigurations(findExactMatchedConfiguration());
     }
 
