@@ -3,11 +3,11 @@ package com.dabogee.config.tools.owner;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.testng.annotations.Test;
 
-public class InheritableConfigFactoryTest {
+public class OwnerConfigFactoryTest {
 
     @Test
     public void testPropertiesInheritance() throws Exception {
-        OwnerAppConfig config = new InheritableConfigFactory("dev03")
+        OwnerAppConfig config = new OwnerConfigFactory("dev03")
                 .create(OwnerAppConfig.class);
 
         assertThat(config.hostname()).isEqualTo("dev03.app.dabogee.com");

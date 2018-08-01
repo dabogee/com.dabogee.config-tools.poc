@@ -22,12 +22,30 @@ public final class PropertiesFinder {
         this.environment = environment;
     }
 
+    /**
+     * @return an array of Properties' objects which were loaded from resources
+     * with the same order as the @findOrderedList() method returns.
+     */
     public Properties[] find() {
-        return parseParentConfigurations(findExactMatchedConfiguration())
+        return findOrderedList()
                 .stream()
                 .map(this::loadPropertiesByFilename)
                 .collect(Collectors.toList())
                 .toArray(new Properties[]{});
+    }
+
+    /**
+     * Looks for extensions of default configuration using dot separator.
+     * Example:
+     * app.properties
+     * app.dev.properties
+     * app.dev.dev03.properties
+     *
+     * @return - a list of filenames of a configuration
+     * with falling from a basic one to more specific.
+     */
+    public List<String> findOrderedList() {
+        return parseParentConfigurations(findExactMatchedConfiguration());
     }
 
     Properties loadPropertiesByFilename(String filename) {

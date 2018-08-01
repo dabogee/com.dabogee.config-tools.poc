@@ -5,11 +5,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import org.aeonbits.owner.Config;
 import org.aeonbits.owner.ConfigFactory;
 
-public final class InheritableConfigFactory {
+public final class OwnerConfigFactory {
 
     private String environment;
 
-    public InheritableConfigFactory(String environment) {
+    public OwnerConfigFactory(String environment) {
         checkNotNull(environment);
         this.environment = environment;
     }
